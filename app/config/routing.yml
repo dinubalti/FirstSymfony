@@ -1,0 +1,4 @@
+group_photo_album_general:
+    resource: "@GroupPhotoAlbumGeneralBundle/Resources/config/routing.yml"
+    prefix:   /
+
