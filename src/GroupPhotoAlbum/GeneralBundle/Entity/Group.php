@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Group
  *
- * @ORM\Table(name="GROUP")
+ * @ORM\Table(name="GPA_GROUP")
  * @ORM\Entity
  */
 class Group extends ValueObject
@@ -25,9 +25,9 @@ class Group extends ValueObject
     /**
      * @ORM\ManyToMany(targetEntity="User", fetch="LAZY", cascade={"persist"})
      * @ORM\JoinTable(
-     *          name = "USER_GROUP", 
-     *          joinColumns = @ORM\JoinColumn(name = "ID_GROUP", nullable = false), 
-     *          inverseJoinColumns = @ORM\JoinColumn(name = "ID_USER", nullable = false))
+     *          name = "GPA_USER_GROUP", 
+     *          joinColumns = @ORM\JoinColumn(name = "ID_GROUP", referencedColumnName="ID", nullable = false), 
+     *          inverseJoinColumns = @ORM\JoinColumn(name = "ID_USER", referencedColumnName="ID", nullable = false))
      */
     private $users;
     

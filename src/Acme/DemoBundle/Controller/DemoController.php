@@ -22,7 +22,7 @@ class DemoController extends Controller
     }
 
     /**
-     * @Route("/hello/{name}", name="_demo_hello")
+     * @Route("/hello/{name}", name="_demo_hello", options={"expose"=true})
      * @Template()
      */
     public function helloAction($name)

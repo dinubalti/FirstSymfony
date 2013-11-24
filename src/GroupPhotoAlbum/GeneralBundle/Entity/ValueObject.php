@@ -18,7 +18,7 @@ abstract class ValueObject
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
     
     /**
      * @ORM\Column(name="NAME", type="string", length=255, nullable=false)

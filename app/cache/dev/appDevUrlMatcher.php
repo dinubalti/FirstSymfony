@@ -133,17 +133,85 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // group_photo_album_general_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'group_photo_album_general_homepage')), array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\DefaultController::indexAction',));
+        // _homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', '_homepage');
+            }
+
+            return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::indexAction',  '_route' => '_homepage',);
+        }
+
+        if (0 === strpos($pathinfo, '/user')) {
+            // index
+            if ($pathinfo === '/user/index') {
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::indexAction',  '_route' => 'index',);
+            }
+
+            // user_list
+            if ($pathinfo === '/user/list') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_user_list;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::listAction',  '_route' => 'user_list',);
+            }
+            not_user_list:
+
+            // role_list
+            if ($pathinfo === '/user/roleList') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_role_list;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::roleListAction',  '_route' => 'role_list',);
+            }
+            not_role_list:
+
+            // group_list
+            if ($pathinfo === '/user/groupList') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_group_list;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::groupListAction',  '_route' => 'group_list',);
+            }
+            not_group_list:
+
+            // user_save
+            if ($pathinfo === '/user/save') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_user_save;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::saveAction',  '_route' => 'user_save',);
+            }
+            not_user_save:
+
+            // user_delete
+            if ($pathinfo === '/user/delete') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_user_delete;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::deleteAction',  '_route' => 'user_delete',);
+            }
+            not_user_delete:
+
+        }
+
+        // fos_js_routing_js
+        if (0 === strpos($pathinfo, '/js/routing') && preg_match('#^/js/routing(?:\\.(?P<_format>js|json))?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_js_routing_js')), array (  '_controller' => 'fos_js_routing.controller:indexAction',  '_format' => 'js',));
         }
 
         // _welcome
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', '_welcome');
-            }
-
+        if ($pathinfo === '/old') {
             return array (  '_controller' => 'Acme\\DemoBundle\\Controller\\WelcomeController::indexAction',  '_route' => '_welcome',);
         }
 

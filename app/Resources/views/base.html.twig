@@ -2,12 +2,20 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bine ati venit!{% endblock %}</title>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <link rel="stylesheet"type="text/css" href="{{ asset('public/js/lib/ext-3.4.1/resources/css/ext-all.css') }}"/>
+        <script src="{{ asset('public/js/lib/ext-3.4.1/adapter/ext/ext-base.js') }}"></script>
+        <script src="{{ asset('public/js/lib/ext-3.4.1/ext-all-debug.js') }}"></script>
+        <script src="{{ asset('public/js/utils.js') }}"></script>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body style="background-image: url(public/images/sky.jpg);">
+        <div style="width: 1024px; margin:0 auto;">
+            {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

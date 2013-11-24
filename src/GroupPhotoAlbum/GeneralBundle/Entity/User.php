@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="USER")
+ * @ORM\Table(name="GPA_USER")
  * @ORM\Entity
  * @ORM\AttributeOverrides({ 
  *          @ORM\AttributeOverride(
@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  *                          name = "FIRST_NAME",
  *                          type="string", 
  *                          length=255, 
- *                          nullable=false)
+ *                          nullable=true)
  * ) })
  */
 class User extends ValueObject
@@ -47,7 +47,7 @@ class User extends ValueObject
     private $phone;
     
     /**
-     * @ORM\Column(name="BIRTH_DATE", type="datetime")
+     * @ORM\Column(name="BIRTH_DATE", type="datetime", nullable=true)
      */
     private $birthDate;     
 
