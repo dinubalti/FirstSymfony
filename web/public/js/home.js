@@ -44,8 +44,7 @@ function createUserGrid(){
             {name: 'birthDate', type: Ext.data.Types.DATE, dateFormat: 'd/m/Y'},
             {name: 'role', type: Ext.data.Types.STRING},
             {name: 'roleId', type: Ext.data.Types.NUMBER},
-            {name: 'groupList', type: Ext.data.Types.STRING},
-            {name: 'groupIds', type: Ext.data.Types.STRING}
+            {name: 'groupList', type: Ext.data.Types.STRING}
         ],
         sortInfo: {
             field: 'secondName',
@@ -413,17 +412,16 @@ function modifyUser(data) {
     Ext.getCmp('emailField').setValue(data.email);
     Ext.getCmp('phoneField').setValue(data.phone);
     Ext.getCmp('birthDateField').setValue(data.birthDate);
-    var grList = data.groupList.split(',');
-    var grIds = data.groupIds.split(',');
     groupIds = [];
     document.getElementById('groupList').innerHTML = '';
-    for (var i=0; i < grList.length; i++) {
+    var groupList = Ext.decode(data.groupList);
+    Ext.each(groupList, function(group) {
         var option = document.createElement("option");
-        option.text = grList[i];
-        option.value = grIds[i];        
+        option.text = group.name;
+        option.value = group.id;        
         document.getElementById('groupList').add(option);
-        groupIds.push(parseInt(grIds[i]));
-    }
+        groupIds.push(parseInt(group.id));
+    });
 }
 
 function addGroups() {

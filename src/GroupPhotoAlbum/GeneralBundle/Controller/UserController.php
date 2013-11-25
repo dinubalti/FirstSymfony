@@ -85,11 +85,12 @@ class UserController extends Controller
             $userVOList = array();
             foreach ($userList as $user) {
                 $groupList = $user->getGroups();
-                $groupNameList = array();
-                $groupIdList = array();
+                $groupVOList = array();
                 foreach ($groupList as $group) {
-                    $groupIdList[] = $group->getId();
-                    $groupNameList[] = $group->getName();
+                    $groupVOList[] = array(
+                        'id' => $group->getId(),
+                        'name' => $group->getName()
+                    );
                 }
                 $userVOList[] = array(
                     'id' => $user->getId(),
@@ -102,8 +103,7 @@ class UserController extends Controller
                     'birthDate' => ($user->getBirthDate() != null) ? $user->getBirthDate()->format('d/m/Y') : '',
                     'role' => $user->getRole()->getWording(),
                     'roleId' => $user->getRole()->getId(),
-                    'groupIds' => $groupIdList,
-                    'groupList' => $groupNameList
+                    'groupList' => json_encode($groupVOList)
                 );
             }
 
