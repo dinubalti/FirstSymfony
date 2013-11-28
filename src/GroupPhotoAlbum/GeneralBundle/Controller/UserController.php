@@ -247,16 +247,17 @@ class UserController extends Controller
                 $user = new User();
             }
             
-            $user->setName(htmlspecialchars(trim($firstName), ENT_QUOTES));
-            $user->setSecondName(htmlspecialchars(trim($secondName), ENT_QUOTES));
-            $user->setLogin(htmlspecialchars(trim($login), ENT_QUOTES));
-            $user->setPassword(htmlspecialchars(trim($password), ENT_QUOTES));
-            $user->setEmail(htmlspecialchars(trim($email), ENT_QUOTES));
-            $user->setPhone(htmlspecialchars(trim($phone), ENT_QUOTES)); 
+            $user->setName(trim($firstName));
+            $user->setSecondName(trim($secondName));
+            $user->setLogin(trim($login));
+            $user->setPassword(trim($password));
+            $user->setEmail(trim($email));
+            $user->setPhone(trim($phone)); 
             if ($birthDate != '') {
-                try {
-                    $user->setBirthDate(\DateTime::createFromFormat('d/m/Y', $birthDate));
-                } catch(\Exception $exc) {
+                $date = \DateTime::createFromFormat('d/m/Y', $birthDate);
+                if ($date !== false) {
+                    $user->setBirthDate($date);
+                } else {
                     return GPAUtils::jsonResponse('ERROR', 'Data nasterii invalida!');
                 }
             }

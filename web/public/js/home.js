@@ -20,6 +20,10 @@ Ext.apply(Ext.form.VTypes, {
     telNumberText: 'Telefonul trebuie sa respecte sablonul 9(999)9-99-99.'
 });
 
+function escapeHtml(value) {
+    return Ext.util.Format.htmlEncode(value);
+}
+
 function createUserGrid(){
     var proxy = new Ext.data.HttpProxy({
         url: Routing.generate('user_list')
@@ -51,7 +55,7 @@ function createUserGrid(){
             dir : 'ASC'
         },
         baseParams: {
-            start: 0,          
+            start: 0,        
             limit: 15
         },
         listeners : {
@@ -84,27 +88,32 @@ function createUserGrid(){
                     dataIndex: 'secondName',
                     header: 'Nume', 
                     sortable: true,
-                    hideable: false
+                    hideable: false,
+                    renderer : escapeHtml
                 },{
                     dataIndex: 'firstName',
                     header: 'Prenume', 
                     sortable: true,
-                    hideable: true
+                    hideable: true,
+                    renderer : escapeHtml
                 },{
                     dataIndex: 'login',
                     header: 'Login', 
                     sortable: true,
-                    hideable: false
+                    hideable: false,
+                    renderer : escapeHtml
                 },{
                     dataIndex: 'email',
                     header: 'Email', 
                     sortable: true,
-                    hideable: true
+                    hideable: true,
+                    renderer : escapeHtml
                 },{
                     dataIndex: 'phone',
                     header: 'Telefon', 
                     sortable: true,
-                    hideable: true
+                    hideable: true,
+                    renderer : escapeHtml
                 },{
                     dataIndex: 'birthDate',
                     header: 'Data nasterii', 
