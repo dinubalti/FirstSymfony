@@ -1,0 +1,73 @@
+2013-12-04 01:16:47 UserController.listAction error : [Syntax Error] line 0, col 99: Error: Expected Doctrine\ORM\Query\Lexer::T_BY, got 'sBY'
+2013-12-04 01:17:18 UserController.listAction error : [Syntax Error] line 0, col 99: Error: Expected Doctrine\ORM\Query\Lexer::T_BY, got 'sBY'
+2013-12-07 16:40:29 UserImagesController.groupListAction error : [Syntax Error] line 0, col 107: Error: Expected end of string, got '('
+2013-12-07 16:41:47 UserImagesController.groupListAction error : [Syntax Error] line 0, col 107: Error: Expected end of string, got '('
+2013-12-07 20:04:16 UserImagesController.uploadImageAction error : Unable to write in the "/home/flanco" directory
+2013-12-07 20:06:46 UserImagesController.uploadImageAction error : Unable to write in the "/" directory
+2013-12-07 20:17:47 UserImagesController.uploadImageAction error : Unable to create the "/public/photos" directory
+2013-12-07 20:18:57 UserImagesController.uploadImageAction error : Unable to write in the "../web/public/photos" directory
+2013-12-07 22:31:51 UserImagesController.uploadImageAction error : The identifier id is missing for a query of GroupPhotoAlbum\GeneralBundle\Entity\Group
+2013-12-07 22:33:26 UserImagesController.uploadImageAction error : The identifier id is missing for a query of GroupPhotoAlbum\GeneralBundle\Entity\Group
+2013-12-07 22:35:09 UserImagesController.uploadImageAction error : Catchable Fatal Error: Argument 1 passed to GroupPhotoAlbum\GeneralBundle\Entity\Photo::setUser() must be an instance of GroupPhotoAlbum\GeneralBundle\Entity\User, null given, called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/UserImagesController.php on line 139 and defined in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Entity/Photo.php line 89
+2013-12-07 22:35:43 UserImagesController.uploadImageAction error : Catchable Fatal Error: Argument 1 passed to GroupPhotoAlbum\GeneralBundle\Entity\Photo::setUser() must be an instance of GroupPhotoAlbum\GeneralBundle\Entity\User, null given, called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/UserImagesController.php on line 139 and defined in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Entity/Photo.php line 89
+2013-12-07 22:38:36 UserImagesController.uploadImageAction error : Catchable Fatal Error: Argument 1 passed to GroupPhotoAlbum\GeneralBundle\Entity\Photo::setUser() must be an instance of GroupPhotoAlbum\GeneralBundle\Entity\User, null given, called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/UserImagesController.php on line 139 and defined in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Entity/Photo.php line 89
+2013-12-07 23:37:19 UserImagesController.groupListAction error : [Semantical Error] line 0, col 145 near 'Id = :userId
+': Error: Class GroupPhotoAlbum\GeneralBundle\Entity\User has no field or association named Id
+2013-12-07 23:38:17 UserImagesController.groupListAction error : [Semantical Error] line 0, col -1 near 'SELECT gr
+  ': Error: Cannot select entity through identification variables without choosing at least one root entity alias.
+2013-12-07 23:42:28 UserImagesController.groupListAction error : [Semantical Error] line 0, col 12 near 'groups
+     ': Error: Invalid PathExpression. Must be a StateFieldPathExpression.
+2013-12-07 23:47:03 UserImagesController.groupListAction error : [Semantical Error] line 0, col 178 near 'gr.name ASC': Error: 'gr' is not defined.
+2013-12-07 23:47:39 UserImagesController.groupListAction error : [Semantical Error] line 0, col 12 near 'groups 
+    ': Error: Invalid PathExpression. Must be a StateFieldPathExpression.
+2013-12-07 23:54:55 UserImagesController.groupListAction error : [Semantical Error] line 0, col 103 near '.users user
+': Error: Identification Variable group used in join path expression but was not defined before.
+2013-12-08 00:10:53 UserImagesController.imagesListAction error : [Syntax Error] line 0, col 237: Error: Expected Doctrine\ORM\Query\Lexer::T_OPEN_PARENTHESIS, got 'user'
+2013-12-08 10:56:53 UserImagesController.deleteAction error : Warning: Invalid argument supplied for foreach() in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/UserImagesController.php line 184
+2013-12-08 12:01:53 UserImagesController.imagesListAction error : An exception occurred while executing 'SELECT g0_.DESCRIPTION AS DESCRIPTION0, g0_.IMAGE_ID AS IMAGE_ID1, g0_.EXTENSION AS EXTENSION2, g0_.ID AS ID3, g0_.NAME AS NAME4, g0_.ID_USER AS ID_USER5, g0_.ID_GROUP AS ID_GROUP6 FROM GPA_PHOTO g0_, GPA_USER g1_ INNER JOIN GPA_GROUP g2_ ON g0_.ID_GROUP = g2_.ID INNER JOIN GPA_USER_GROUP g4_ ON g1_.ID = g4_.ID_USER INNER JOIN GPA_GROUP g3_ ON g3_.ID = g4_.ID_GROUP WHERE g1_.ID = ? AND g2_.ID = g3_.ID' with params ["23"]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'g0_.ID_GROUP' in 'on clause'
+2013-12-08 12:05:33 UserImagesController.imagesListAction error : An exception occurred while executing 'SELECT g0_.DESCRIPTION AS DESCRIPTION0, g0_.IMAGE_ID AS IMAGE_ID1, g0_.EXTENSION AS EXTENSION2, g0_.ID AS ID3, g0_.NAME AS NAME4, g0_.ID_USER AS ID_USER5, g0_.ID_GROUP AS ID_GROUP6 FROM GPA_PHOTO g0_, GPA_USER g1_ INNER JOIN GPA_GROUP g2_ ON g0_.ID_GROUP = g2_.ID WHERE g1_.ID = ?' with params ["23"]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'g0_.ID_GROUP' in 'on clause'
+2013-12-08 12:06:21 UserImagesController.imagesListAction error : [Syntax Error] line 0, col -1: Error: Expected Literal, got end of string.
+2013-12-08 12:06:32 UserImagesController.imagesListAction error : [Syntax Error] line 0, col -1: Error: Expected Literal, got end of string.
+2013-12-08 12:07:21 UserImagesController.imagesListAction error : Invalid parameter number: number of bound variables does not match number of tokens
+2013-12-08 12:08:24 UserImagesController.imagesListAction error : An exception occurred while executing 'SELECT g0_.DESCRIPTION AS DESCRIPTION0, g0_.IMAGE_ID AS IMAGE_ID1, g0_.EXTENSION AS EXTENSION2, g0_.ID AS ID3, g0_.NAME AS NAME4, g0_.ID_USER AS ID_USER5, g0_.ID_GROUP AS ID_GROUP6 FROM GPA_PHOTO g0_, GPA_USER g1_ INNER JOIN GPA_GROUP g2_ ON g0_.ID_GROUP = g2_.ID INNER JOIN GPA_USER_GROUP g4_ ON g1_.ID = g4_.ID_USER INNER JOIN GPA_GROUP g3_ ON g3_.ID = g4_.ID_GROUP WHERE g1_.ID = ? AND g2_.ID = g3_.ID' with params ["23"]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'g0_.ID_GROUP' in 'on clause'
+2013-12-08 12:08:44 UserImagesController.imagesListAction error : An exception occurred while executing 'SELECT g0_.DESCRIPTION AS DESCRIPTION0, g0_.IMAGE_ID AS IMAGE_ID1, g0_.EXTENSION AS EXTENSION2, g0_.ID AS ID3, g0_.NAME AS NAME4, g0_.ID_USER AS ID_USER5, g0_.ID_GROUP AS ID_GROUP6 FROM GPA_PHOTO g0_, GPA_USER g1_ INNER JOIN GPA_GROUP g2_ ON g0_.ID_GROUP = g2_.ID INNER JOIN GPA_USER_GROUP g4_ ON g1_.ID = g4_.ID_USER INNER JOIN GPA_GROUP g3_ ON g3_.ID = g4_.ID_GROUP WHERE g1_.ID = ? AND g2_.ID = g3_.ID' with params ["23"]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'g0_.ID_GROUP' in 'on clause'
+2013-12-08 12:09:04 UserImagesController.imagesListAction error : An exception occurred while executing 'SELECT g0_.DESCRIPTION AS DESCRIPTION0, g0_.IMAGE_ID AS IMAGE_ID1, g0_.EXTENSION AS EXTENSION2, g0_.ID AS ID3, g0_.NAME AS NAME4, g0_.ID_USER AS ID_USER5, g0_.ID_GROUP AS ID_GROUP6 FROM GPA_PHOTO g0_, GPA_USER g1_ INNER JOIN GPA_GROUP g2_ ON g0_.ID_GROUP = g2_.ID INNER JOIN GPA_USER_GROUP g4_ ON g1_.ID = g4_.ID_USER INNER JOIN GPA_GROUP g3_ ON g3_.ID = g4_.ID_GROUP WHERE g1_.ID = ? AND g2_.ID = g3_.ID' with params ["23"]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'g0_.ID_GROUP' in 'on clause'
+2013-12-08 12:09:30 UserImagesController.imagesListAction error : An exception occurred while executing 'SELECT g0_.DESCRIPTION AS DESCRIPTION0, g0_.IMAGE_ID AS IMAGE_ID1, g0_.EXTENSION AS EXTENSION2, g0_.ID AS ID3, g0_.NAME AS NAME4, g0_.ID_USER AS ID_USER5, g0_.ID_GROUP AS ID_GROUP6 FROM GPA_PHOTO g0_, GPA_USER g1_ INNER JOIN GPA_GROUP g2_ ON g0_.ID_GROUP = g2_.ID INNER JOIN GPA_USER_GROUP g4_ ON g1_.ID = g4_.ID_USER INNER JOIN GPA_GROUP g3_ ON g3_.ID = g4_.ID_GROUP WHERE g1_.ID = ? AND g2_.ID = g3_.ID' with params ["23"]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'g0_.ID_GROUP' in 'on clause'
+2013-12-08 12:09:44 UserImagesController.imagesListAction error : An exception occurred while executing 'SELECT g0_.DESCRIPTION AS DESCRIPTION0, g0_.IMAGE_ID AS IMAGE_ID1, g0_.EXTENSION AS EXTENSION2, g0_.ID AS ID3, g0_.NAME AS NAME4, g0_.ID_USER AS ID_USER5, g0_.ID_GROUP AS ID_GROUP6 FROM GPA_PHOTO g0_, GPA_USER g1_ INNER JOIN GPA_GROUP g2_ ON g0_.ID_GROUP = g2_.ID INNER JOIN GPA_USER_GROUP g4_ ON g1_.ID = g4_.ID_USER INNER JOIN GPA_GROUP g3_ ON g3_.ID = g4_.ID_GROUP WHERE g1_.ID = ? AND g2_.ID = g3_.ID' with params ["23"]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'g0_.ID_GROUP' in 'on clause'
+2013-12-08 12:14:33 UserImagesController.imagesListAction error : An exception occurred while executing 'SELECT g0_.DESCRIPTION AS DESCRIPTION0, g0_.IMAGE_ID AS IMAGE_ID1, g0_.EXTENSION AS EXTENSION2, g0_.ID AS ID3, g0_.NAME AS NAME4, g0_.ID_USER AS ID_USER5, g0_.ID_GROUP AS ID_GROUP6 FROM GPA_PHOTO g0_, GPA_USER g1_ INNER JOIN GPA_GROUP g2_ ON g0_.ID_GROUP = g2_.ID INNER JOIN GPA_USER_GROUP g4_ ON g1_.ID = g4_.ID_USER INNER JOIN GPA_GROUP g3_ ON g3_.ID = g4_.ID_GROUP WHERE g1_.ID = ? AND g2_.ID = g3_.ID' with params ["23"]:
+
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'g0_.ID_GROUP' in 'on clause'
+2013-12-08 12:15:54 UserImagesController.imagesListAction error : [Semantical Error] line 0, col 126 near 'JOIN photo.group': Error: Class 'JOIN' is not defined.
+2013-12-08 12:38:53 UserImagesController.userListAction error : [Syntax Error] line 0, col 113: Error: Expected end of string, got 'user'
+2013-12-08 12:40:45 UserImagesController.userListAction error : [Syntax Error] line 0, col 113: Error: Expected end of string, got 'user'
+2013-12-08 12:43:52 UserImagesController.userListAction error : [Syntax Error] line 0, col 104: Error: Expected end of string, got 'user'
+2013-12-08 18:29:17 SendEmailController.sendEmailAction error : Warning: Missing argument 2 for GroupPhotoAlbum\GeneralBundle\Utils\GPAUtils::logError(), called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php on line 85 and defined in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Utils/GPAUtils.php line 64
+2013-12-08 18:31:03 SendEmailController.sendEmailAction error : Warning: Missing argument 2 for GroupPhotoAlbum\GeneralBundle\Utils\GPAUtils::logError(), called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php on line 85 and defined in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Utils/GPAUtils.php line 64
+2013-12-08 18:34:41 SendEmailController.sendEmailAction error : Warning: Missing argument 2 for GroupPhotoAlbum\GeneralBundle\Utils\GPAUtils::logError(), called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php on line 85 and defined in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Utils/GPAUtils.php line 64
+2013-12-08 18:35:32 SendEmailController.sendEmailAction error : Warning: Missing argument 2 for GroupPhotoAlbum\GeneralBundle\Utils\GPAUtils::logError(), called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php on line 85 and defined in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Utils/GPAUtils.php line 64
+2013-12-08 18:44:05 SendEmailController.sendEmailAction error: mail-ul nu poate fi trimis
+2013-12-08 20:07:55 SendEmailController.sendEmailAction error : Warning: mail(/var/log/mail/mail.log): failed to open stream: No such file or directory in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php line 84
+2013-12-08 20:17:30 SendEmailController.sendEmailAction error : Warning: mail(/var/log/mail/mail.log): failed to open stream: No such file or directory in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php line 84
+2013-12-08 20:21:23 SendEmailController.sendEmailAction error : Warning: mail(/var/log/mail/mail.log): failed to open stream: No such file or directory in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php line 84
+2013-12-08 20:31:40 SendEmailController.sendEmailAction error : Warning: mail(/var/log/mail/mail.log): failed to open stream: No such file or directory in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php line 84
+2013-12-08 21:28:09 SendEmailController.sendEmailAction error : Catchable Fatal Error: Argument 1 passed to Swift_Mailer::send() must implement interface Swift_Mime_Message, string given, called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php on line 94 and defined in /var/www/FirstSymfony/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php line 75
+2013-12-08 21:32:13 SendEmailController.sendEmailAction error : Catchable Fatal Error: Argument 1 passed to Swift_Mailer::send() must implement interface Swift_Mime_Message, string given, called in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/SendEmailController.php on line 94 and defined in /var/www/FirstSymfony/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php line 75
+2013-12-08 21:37:52 SendEmailController.sendEmailAction error : Address in mailbox given [GPA admin <dinubalti@gmail.com>] does not comply with RFC 2822, 3.6.2.
+2013-12-24 11:38:56 ExamenController.loginAction error : An exception occurred while executing 'INSERT INTO GPA_USER (SECOND_NAME, LOGIN, PASSWORD, EMAIL, PHONE, BIRTH_DATE, FIRST_NAME, ID_ROLE) VALUES (?, ?, ?, ?, ?, ?, ?, ?)' with params [null, "logindinu", "parola1", null, null, null, "ftp:\/\/fsefe", null]:
+
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'SECOND_NAME' cannot be null
+2014-01-02 21:43:10 UserController.listAction error : Notice: Undefined variable: sortField in /var/www/FirstSymfony/src/GroupPhotoAlbum/GeneralBundle/Controller/UserController.php line 82

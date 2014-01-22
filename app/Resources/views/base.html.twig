@@ -2,17 +2,27 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Bine ati venit!{% endblock %}</title>
+        <title>{% block title %}GPA{% endblock %}</title>
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         <link rel="stylesheet"type="text/css" href="{{ asset('public/js/lib/ext-3.4.1/resources/css/ext-all.css') }}"/>
         <script src="{{ asset('public/js/lib/ext-3.4.1/adapter/ext/ext-base.js') }}"></script>
         <script src="{{ asset('public/js/lib/ext-3.4.1/ext-all-debug.js') }}"></script>
         <script src="{{ asset('public/js/utils.js') }}"></script>
+        <script src="{{ asset('public/js/lib/FileUploadField.js') }}"></script>
+        <link rel="stylesheet"type="text/css" href="{{ asset('public/css/styles.css') }}"/>
+        <link rel="stylesheet"type="text/css" href="{{ asset('public/css/fileuploadfield.css') }}"/>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body style="background-image: url(public/images/sky.jpg);">
+    <body style="background-image: url(../public/images/sky.jpg);">
+        <input type="hidden" id="userId" value={{ app.session.get('GPAUserId') }} />
+        <input type="hidden" id="userRole" value={{ app.session.get('GPAUserRole') }} />
+        <a href="home"><img src="{{ asset('public/images/banner.png') }}" style="margin-left: 50px; margin-top: 10px;"/></a>
+        <div style="float: right; margin-right: 50px; margin-top: 50px;" >
+            <span style="font-style:italic;"> {{ app.session.get('GPAUserName') }} </span>
+            <a href="login/logoutAction"><img src="{{ asset('public/images/logout.png') }}"/></a>
+        </div>
         <div style="width: 1024px; margin:0 auto;">
             {% block body %}{% endblock %}
         </div>

@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block javascripts %}
+    <script src="{{ asset('public/js/home.js') }}"></script>
+{% endblock %}
+ 
+{% block body %}
+    <div style="margin-top: 40px; text-align: center;">
+        <div id="userOption" style="text-align: center; width: 300px; display:inline-block">
+            <a href="user"> <img src="{{ asset('public/images/user.png') }}" title="Utilizatori"/> </a>
+            <b> Utilizatori </b>
+        </div>
+        <div id="groupOption" style="text-align: center; width: 300px; display:inline-block">
+            <a href="group"> <img src="{{ asset('public/images/group.png') }}" title="Grupuri"/> </a>
+        <b> Grupuri </b>
+        </div>
+        <div id="userImagesOption" style="text-align: center; width: 300px; display:inline-block">
+            <a href="userImages"> <img src="{{ asset('public/images/userphotos.png') }}" title="Fotografiile personale"/> </a>
+            <b> Fotografiile personale </b>
+        </div>
+        <div id="userGroupsImagesOption" style="text-align: center; width: 300px; display:inline-block">
+            <a href="userGroupsImages"> <img src="{{ asset('public/images/groupphotos.png') }}" title="Fotografiile grupurilor"/> </a>
+            <b> Fotografiile grupurilor </b>
+        </div>
+        <div id="sendEmailOption" style="text-align: center; width: 300px; display:inline-block">
+            <a href="sendEmail"> <img src="{{ asset('public/images/email.png') }}" title="Email catre utilizatori"/> </a>
+            <b> Email catre utilizatori </b>
+        </div>
+    </div>
+{% endblock %}
+    

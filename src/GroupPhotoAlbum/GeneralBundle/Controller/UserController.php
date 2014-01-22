@@ -15,11 +15,16 @@ use GroupPhotoAlbum\GeneralBundle\Utils\GPAUtils;
 class UserController extends Controller
 {
     /**
-     * @Route("/index", name="index")
+     * @Route("/index", name="user_index")
      */
     public function indexAction()
     {
-        return $this->render('GroupPhotoAlbumGeneralBundle:Welcome:index.html.twig');
+        if (!$this->get('session')->has('GPAUserRole')) {
+            return $this->render('GroupPhotoAlbumGeneralBundle:Common:login.html.twig');
+        } else if ($this->get('session')->get('GPAUserRole') != 'ROOT') {
+            return $this->render('GroupPhotoAlbumGeneralBundle:Common:notAuthorized.html.twig');
+        }
+        return $this->render('GroupPhotoAlbumGeneralBundle:Root:user.html.twig');
     }
     
     /**
@@ -113,18 +118,15 @@ class UserController extends Controller
             );
         
         } catch(\Exception $exc) {
-            $result = array(
-                "result" => 'ERROR'
-            );
+            GPAUtils::logError('UserController.listAction error', $exc);
+            return GPAUtils::jsonResponse('ERROR', 'S-a produs o eroare tehnica!');
         }
         
-        $response = new JsonResponse();
-        $response->setData($result);
-        return $response;
+        return GPAUtils::objToJsonResponse($result);
     }
     
     /**
-     * @Route("/roleList", name="role_list", options={"expose"=true})
+     * @Route("/roleList", name="user_role_list", options={"expose"=true})
      * @Method({"GET", "POST"})
      */
     public function roleListAction()
@@ -153,18 +155,15 @@ class UserController extends Controller
                 "data" => $comboVOList
             );
         } catch(\Exception $exc) {
-            $result = array(
-                "result" => 'ERROR'
-            );
+            GPAUtils::logError('UserController.roleListAction error', $exc);
+            return GPAUtils::jsonResponse('ERROR', 'S-a produs o eroare tehnica!');
         }
         
-        $response = new JsonResponse();
-        $response->setData($result);
-        return $response;
+        return GPAUtils::objToJsonResponse($result);
     }
     
     /**
-     * @Route("/groupList", name="group_list", options={"expose"=true})
+     * @Route("/groupList", name="user_group_list", options={"expose"=true})
      * @Method({"GET", "POST"})
      */
     public function groupListAction()
@@ -192,14 +191,11 @@ class UserController extends Controller
                 "data" => $groupVOList
             );
         } catch(\Exception $exc) {
-            $result = array(
-                "result" => 'ERROR'
-            );
+            GPAUtils::logError('UserController.groupListAction error', $exc);
+            return GPAUtils::jsonResponse('ERROR', 'S-a produs o eroare tehnica!');
         }
         
-        $response = new JsonResponse();
-        $response->setData($result);
-        return $response;
+        return GPAUtils::objToJsonResponse($result);
     }
     
     /**
@@ -288,12 +284,13 @@ class UserController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
-            $em->flush();
-
-            return GPAUtils::jsonResponse('SUCCESS', '');
+            $em->flush();            
         } catch(\Exception $exc) {
+            GPAUtils::logError('UserController.saveAction error', $exc);
             return GPAUtils::jsonResponse('ERROR', 'S-a produs o eroare tehnica!');
         }
+        
+        return GPAUtils::jsonResponse('SUCCESS', '');
     }
     
     /**
@@ -314,27 +311,17 @@ class UserController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->remove($user);
                     $em->flush();
-
-                    $result = array(
-                        "result" => 'SUCCESS'
-                    );
                 }
             }
             if (!isset($user) || $user == null) {
-                $result = array(
-                    "result" => 'ERROR',
-                    "message" => 'Id-ul este invalid!'
-                );
+                GPAUtils::logError('UserController.deleteAction error : invalid id : '.$id);
+                return GPAUtils::jsonResponse('ERROR', 'Id-ul este invalid!');
             }
         } catch(\Exception $exc) {
-            $result = array(
-                "result" => 'ERROR',
-                "message" => 'S-a produs o eroare tehnica!'
-            );
+            GPAUtils::logError('UserController.deleteAction error', $exc);
+            return GPAUtils::jsonResponse('ERROR', 'S-a produs o eroare tehnica!');
         }
         
-        $response = new JsonResponse();
-        $response->setData($result);
-        return $response;
+        return GPAUtils::jsonResponse('SUCCESS', '');
     }
 }

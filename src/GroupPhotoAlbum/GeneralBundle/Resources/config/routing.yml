@@ -1,8 +1,71 @@
+_loginpage:
+    pattern:  /login
+    defaults: { _controller: GroupPhotoAlbumGeneralBundle:Login:index }
+    
 _homepage:
-    pattern:  /
+    pattern:  /home
+    defaults: { _controller: GroupPhotoAlbumGeneralBundle:Home:index }
+
+_userpage:
+    pattern:  /user
     defaults: { _controller: GroupPhotoAlbumGeneralBundle:User:index }
+    
+_grouppage:
+    pattern:  /group
+    defaults: { _controller: GroupPhotoAlbumGeneralBundle:Group:index }
+    
+_userImagespage:
+    pattern:  /userImages
+    defaults: { _controller: GroupPhotoAlbumGeneralBundle:UserImages:index }
+    
+_userGroupsImagespage:
+    pattern:  /userGroupsImages
+    defaults: { _controller: GroupPhotoAlbumGeneralBundle:UserGroupsImages:index }
+    
+_userSendEmailpage:
+    pattern:  /sendEmail
+    defaults: { _controller: GroupPhotoAlbumGeneralBundle:SendEmail:index }
+   
+_login:
+    resource: "@GroupPhotoAlbumGeneralBundle/Controller/LoginController.php"
+    type:     annotation
+    prefix:   /login
+    
+_home:
+    resource: "@GroupPhotoAlbumGeneralBundle/Controller/HomeController.php"
+    type:     annotation
+    prefix:   /home
     
 _user:
     resource: "@GroupPhotoAlbumGeneralBundle/Controller/UserController.php"
     type:     annotation
     prefix:   /user
+    
+_group:
+    resource: "@GroupPhotoAlbumGeneralBundle/Controller/GroupController.php"
+    type:     annotation
+    prefix:   /group
+    
+_userImages:
+    resource: "@GroupPhotoAlbumGeneralBundle/Controller/UserImagesController.php"
+    type:     annotation
+    prefix:   /userImages
+    
+_userGroupsImages:
+    resource: "@GroupPhotoAlbumGeneralBundle/Controller/UserGroupsImagesController.php"
+    type:     annotation
+    prefix:   /userGroupsImages
+    
+_sendEmail:
+    resource: "@GroupPhotoAlbumGeneralBundle/Controller/SendEmailController.php"
+    type:     annotation
+    prefix:   /sendEmail
+
+_examenpage:
+    pattern:  /examen
+    defaults: { _controller: GroupPhotoAlbumGeneralBundle:Examen:index }
+    
+_examen:
+    resource: "@GroupPhotoAlbumGeneralBundle/Controller/ExamenController.php"
+    type:     annotation
+    prefix:   /examen

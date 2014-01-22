@@ -2,6 +2,5 @@ parameters:
 #    group_photo_album_general.example.class: GroupPhotoAlbum\GeneralBundle\Example
 
 services:
-#    group_photo_album_general.example:
-#        class: %group_photo_album_general.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+  gpa.logfileservice:
+    class:  GroupPhotoAlbum\GeneralBundle\Service\LogFileService

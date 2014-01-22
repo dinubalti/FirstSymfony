@@ -133,19 +133,78 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // _homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', '_homepage');
-            }
+        // _loginpage
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\LoginController::indexAction',  '_route' => '_loginpage',);
+        }
 
-            return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::indexAction',  '_route' => '_homepage',);
+        // _homepage
+        if ($pathinfo === '/home') {
+            return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\HomeController::indexAction',  '_route' => '_homepage',);
+        }
+
+        // _userpage
+        if ($pathinfo === '/user') {
+            return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::indexAction',  '_route' => '_userpage',);
+        }
+
+        // _grouppage
+        if ($pathinfo === '/group') {
+            return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\GroupController::indexAction',  '_route' => '_grouppage',);
         }
 
         if (0 === strpos($pathinfo, '/user')) {
-            // index
+            // _userImagespage
+            if ($pathinfo === '/userImages') {
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserImagesController::indexAction',  '_route' => '_userImagespage',);
+            }
+
+            // _userGroupsImagespage
+            if ($pathinfo === '/userGroupsImages') {
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserGroupsImagesController::indexAction',  '_route' => '_userGroupsImagespage',);
+            }
+
+        }
+
+        // _userSendEmailpage
+        if ($pathinfo === '/sendEmail') {
+            return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\SendEmailController::indexAction',  '_route' => '_userSendEmailpage',);
+        }
+
+        if (0 === strpos($pathinfo, '/login/log')) {
+            // login_login_action
+            if ($pathinfo === '/login/loginAction') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_login_login_action;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\LoginController::loginAction',  '_route' => 'login_login_action',);
+            }
+            not_login_login_action:
+
+            // login_logout_action
+            if ($pathinfo === '/login/logoutAction') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_login_logout_action;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\LoginController::logoutAction',  '_route' => 'login_logout_action',);
+            }
+            not_login_logout_action:
+
+        }
+
+        // home_index
+        if ($pathinfo === '/home/index') {
+            return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\HomeController::indexAction',  '_route' => 'home_index',);
+        }
+
+        if (0 === strpos($pathinfo, '/user')) {
+            // user_index
             if ($pathinfo === '/user/index') {
-                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::indexAction',  '_route' => 'index',);
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::indexAction',  '_route' => 'user_index',);
             }
 
             // user_list
@@ -159,27 +218,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_user_list:
 
-            // role_list
+            // user_role_list
             if ($pathinfo === '/user/roleList') {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_role_list;
+                    goto not_user_role_list;
                 }
 
-                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::roleListAction',  '_route' => 'role_list',);
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::roleListAction',  '_route' => 'user_role_list',);
             }
-            not_role_list:
+            not_user_role_list:
 
-            // group_list
+            // user_group_list
             if ($pathinfo === '/user/groupList') {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
-                    goto not_group_list;
+                    goto not_user_group_list;
                 }
 
-                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::groupListAction',  '_route' => 'group_list',);
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::groupListAction',  '_route' => 'user_group_list',);
             }
-            not_group_list:
+            not_user_group_list:
 
             // user_save
             if ($pathinfo === '/user/save') {
@@ -202,6 +261,208 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserController::deleteAction',  '_route' => 'user_delete',);
             }
             not_user_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/group')) {
+            // group_index
+            if ($pathinfo === '/group/index') {
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\GroupController::indexAction',  '_route' => 'group_index',);
+            }
+
+            // group_list
+            if ($pathinfo === '/group/list') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_group_list;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\GroupController::listAction',  '_route' => 'group_list',);
+            }
+            not_group_list:
+
+            // group_save
+            if ($pathinfo === '/group/save') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_group_save;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\GroupController::saveAction',  '_route' => 'group_save',);
+            }
+            not_group_save:
+
+            // group_delete
+            if ($pathinfo === '/group/delete') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_group_delete;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\GroupController::deleteAction',  '_route' => 'group_delete',);
+            }
+            not_group_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/user')) {
+            if (0 === strpos($pathinfo, '/userImages')) {
+                // user_img_index
+                if ($pathinfo === '/userImages/index') {
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserImagesController::indexAction',  '_route' => 'user_img_index',);
+                }
+
+                // user_img_list
+                if ($pathinfo === '/userImages/list') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_user_img_list;
+                    }
+
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserImagesController::listAction',  '_route' => 'user_img_list',);
+                }
+                not_user_img_list:
+
+                // user_img_group_list
+                if ($pathinfo === '/userImages/groupList') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_user_img_group_list;
+                    }
+
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserImagesController::groupListAction',  '_route' => 'user_img_group_list',);
+                }
+                not_user_img_group_list:
+
+                // user_img_upload_image
+                if ($pathinfo === '/userImages/uploadImage') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_user_img_upload_image;
+                    }
+
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserImagesController::uploadAction',  '_route' => 'user_img_upload_image',);
+                }
+                not_user_img_upload_image:
+
+                // user_img_delete_images
+                if ($pathinfo === '/userImages/deleteImages') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_user_img_delete_images;
+                    }
+
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserImagesController::deleteAction',  '_route' => 'user_img_delete_images',);
+                }
+                not_user_img_delete_images:
+
+            }
+
+            if (0 === strpos($pathinfo, '/userGroupsImages')) {
+                // user_groups_img_index
+                if ($pathinfo === '/userGroupsImages/index') {
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserGroupsImagesController::indexAction',  '_route' => 'user_groups_img_index',);
+                }
+
+                // user_groups_img_list
+                if ($pathinfo === '/userGroupsImages/list') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_user_groups_img_list;
+                    }
+
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserGroupsImagesController::listAction',  '_route' => 'user_groups_img_list',);
+                }
+                not_user_groups_img_list:
+
+                // user_groups_img_group_list
+                if ($pathinfo === '/userGroupsImages/groupList') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_user_groups_img_group_list;
+                    }
+
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserGroupsImagesController::groupListAction',  '_route' => 'user_groups_img_group_list',);
+                }
+                not_user_groups_img_group_list:
+
+                // user_groups_img_user_list
+                if ($pathinfo === '/userGroupsImages/userList') {
+                    if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                        goto not_user_groups_img_user_list;
+                    }
+
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserGroupsImagesController::userListAction',  '_route' => 'user_groups_img_user_list',);
+                }
+                not_user_groups_img_user_list:
+
+                // user_groups_img_delete_images
+                if ($pathinfo === '/userGroupsImages/deleteImages') {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_user_groups_img_delete_images;
+                    }
+
+                    return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\UserGroupsImagesController::deleteAction',  '_route' => 'user_groups_img_delete_images',);
+                }
+                not_user_groups_img_delete_images:
+
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/sendEmail')) {
+            // send_eamil_index
+            if ($pathinfo === '/sendEmail/index') {
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\SendEmailController::indexAction',  '_route' => 'send_eamil_index',);
+            }
+
+            // send_email_user_list
+            if ($pathinfo === '/sendEmail/userList') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_send_email_user_list;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\SendEmailController::userListAction',  '_route' => 'send_email_user_list',);
+            }
+            not_send_email_user_list:
+
+            // send_email_send
+            if ($pathinfo === '/sendEmail/send') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_send_email_send;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\SendEmailController::sendEmailAction',  '_route' => 'send_email_send',);
+            }
+            not_send_email_send:
+
+        }
+
+        if (0 === strpos($pathinfo, '/examen')) {
+            // _examenpage
+            if ($pathinfo === '/examen') {
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\ExamenController::indexAction',  '_route' => '_examenpage',);
+            }
+
+            // login_index
+            if ($pathinfo === '/examen/index') {
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\ExamenController::indexAction',  '_route' => 'login_index',);
+            }
+
+            // examen_login_action
+            if ($pathinfo === '/examen/loginAction') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_examen_login_action;
+                }
+
+                return array (  '_controller' => 'GroupPhotoAlbum\\GeneralBundle\\Controller\\ExamenController::loginAction',  '_route' => 'examen_login_action',);
+            }
+            not_examen_login_action:
 
         }
 

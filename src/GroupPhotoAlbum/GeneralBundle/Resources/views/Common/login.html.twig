@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}GPA{% endblock %}</title>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <link rel="stylesheet"type="text/css" href="{{ asset('public/js/lib/ext-3.4.1/resources/css/ext-all.css') }}"/>
+        <script src="{{ asset('public/js/lib/ext-3.4.1/adapter/ext/ext-base.js') }}"></script>
+        <script src="{{ asset('public/js/lib/ext-3.4.1/ext-all-debug.js') }}"></script>
+        <script src="{{ asset('public/js/utils.js') }}"></script>
+        <script src="{{ asset('public/js/login.js') }}"></script>
+        <link rel="stylesheet"type="text/css" href="{{ asset('public/css/styles.css') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body style="background-image: url(../public/images/sky.jpg);">
+        <img src="{{ asset('public/images/banner.png') }}" style="margin-left: 50px; margin-top: 10px;"/>
+        <div style="width: 400px; margin:0 auto;">
+            <div id="login-form" style="margin-top: 100px;"> </div>
+        </div>
+    </body>
+</html>
+    

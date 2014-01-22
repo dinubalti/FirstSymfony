@@ -18,23 +18,23 @@ at http://www.sencha.com/contact.
 
 Build date: 2013-04-03 15:07:25
 */
-#phones {
+#photos {
     background-color: #fff;
     text-shadow: #fff 0 1px 0;
 }
 
-#phones ul {
+#photos ul {
     position: relative;
     display: block;
     height: auto;
     font-size: 85%;
 }
 
-#phones ul li img {
+#photos ul li img {
     margin-bottom: 1px;
 }
 
-#phones ul li {
+#photos ul li {
     float: left;
     padding: 8px 17px;
     margin: 5px;
@@ -54,23 +54,23 @@ Build date: 2013-04-03 15:07:25
     background-color: #eee;
 }*/
 
-#phones ul li.x-view-selected {
+#photos ul li.x-view-selected {
     background-color: rgba(100, 100, 100, .15);
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-top: 1px solid rgba(0, 0, 0, .15);
 }
 
-#phones ul li img {
+#photos ul li img {
 /*    display: block;*/
 }
 
-#phones li strong {
+#photos li strong {
     color: #000;
     display: block;
 }
 
-#phones li span {
+#photos li span {
     color: #999;
 }
 

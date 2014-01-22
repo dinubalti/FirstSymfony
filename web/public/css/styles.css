@@ -1,0 +1,72 @@
+
+#photos {
+    background-color: #FFFFFF;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+#photos ul {
+    display: block;
+    font-size: 85%;
+    height: auto;
+    position: relative;
+}
+#photos ul li img {
+    margin-bottom: 1px;
+}
+#photos ul li {
+    border-top: 1px solid rgba(0, 0, 0, 0);
+    color: #333333;
+    cursor: pointer;
+    float: left;
+    font-family: "Helvetica Neue",sans-serif;
+    height: 200px;
+    line-height: 1.25em;
+    margin: 5px;
+    overflow: hidden;
+    padding: 8px 17px;
+    text-align: center;
+    width: 160px;
+}
+#photos ul li.x-view-selected {
+    background-color: rgba(100, 100, 100, 0.15);
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+#photos ul li img {
+}
+#photos li strong {
+    color: #000000;
+    display: block;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#photos li i {
+    color: #2D3E30;
+    display: block;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#photos li span {
+    color: #999999;
+    display: block;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sort-desc {
+    background-image: url("../images/sort_desc.gif") !important;
+    background-position: 4px 7px !important;
+}
+.sort-asc {
+    background-image: url("../images/sort_asc.gif") !important;
+    background-position: 4px 7px !important;
+}
+
+.upload-icon {
+    background: url("../images/image_add.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+}
+

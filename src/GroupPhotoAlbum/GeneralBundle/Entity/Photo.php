@@ -18,6 +18,16 @@ class Photo extends ValueObject
     private $description;
     
     /**
+     * @ORM\Column(name="IMAGE_ID", type="integer", nullable=false)
+     */
+    private $imageId;
+    
+    /**
+     * @ORM\Column(name="EXTENSION", type="string", length=255, nullable=false)
+     */
+    private $extension;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="User", fetch="LAZY", cascade={"persist"})
      * @ORM\JoinColumn(name="ID_USER", referencedColumnName="ID", nullable=false)
      */
@@ -50,6 +60,52 @@ class Photo extends ValueObject
     public function getDescription()
     {
         return $this->description;
+    }
+    
+    /**
+     * Set imageId
+     *
+     * @param integer $imageId
+     * @return Photo
+     */
+    public function setImageId($imageId)
+    {
+        $this->imageId = $imageId;
+    
+        return $this;
+    }
+
+    /**
+     * Get imageId
+     *
+     * @return integer 
+     */
+    public function getImageId()
+    {
+        return $this->imageId;
+    }
+    
+    /**
+     * Set extension
+     *
+     * @param string $extension
+     * @return Photo
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+    
+        return $this;
+    }
+
+    /**
+     * Get extension
+     *
+     * @return string 
+     */
+    public function getExtension()
+    {
+        return $this->extension;
     }
 
     /**
